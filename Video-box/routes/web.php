@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Accounts start
+Route::get('/account', 'ReporterController@index')
+    ->name('reporter.crud');
+Route::get('/account/edit', 'ReporterController@index')
+    ->name('reporter.edit');
+Route::get('/account/upload', 'ReporterController@uploadView')
+    ->name('reporter.upload');
+// Accounts end
