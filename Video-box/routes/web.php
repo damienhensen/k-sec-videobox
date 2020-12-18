@@ -23,5 +23,7 @@ Route::get('/account', 'ReporterController@index')
 Route::get('/account/edit', 'ReporterController@index')
     ->name('reporter.edit');
 Route::get('/account/upload', 'ReporterController@uploadView')
+    ->name('reporter.upload.view');
+Route::post('/account/upload', 'ReporterController@upload')
     ->name('reporter.upload');
 // Accounts end

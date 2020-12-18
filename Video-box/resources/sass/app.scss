@@ -18,4 +18,30 @@ ul {
     clear: both;
 }
 
+$alertBoxShadow: 1px 1px 6px 0px;
+
+.alert {
+    margin: 15px 0;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 700;
+
+    &.alert-success {
+        box-shadow: $alertBoxShadow #13a909;
+        background-color: #0ee20e;
+        color: white;
+    }
+
+    &.alert-error {
+        box-shadow: $alertBoxShadow #a90909;
+        background-color: #e20e0e;
+        color: white;
+        display: none;
+    }
+
+    li {
+        margin: 5px 0;
+    }
+}
+
 @import 'reporter';

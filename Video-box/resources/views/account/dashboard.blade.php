@@ -6,15 +6,19 @@
 
 @section('content')
 <div class="loop">
+
+    @foreach($reports as $report)
     <div class="item">
         <div class="item-in">
-            <video src="#"></video>
+            <video src="{{$report->video}}"></video>
             <div class="bottom">
-                <p class="title">Video Title</p>
+                <p class="title">{{$report->title}}</p>
                 <button class="edit">Edit</button>
             </div>
         </div>
     </div>
+    @endforeach
+    
     <div class="clear"></div>
 </div>
 @endsection
