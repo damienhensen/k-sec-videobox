@@ -49730,6 +49730,8 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./melding */ "./resources/js/melding.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -49865,6 +49867,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/melding.js":
+/*!*********************************!*\
+  !*** ./resources/js/melding.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+jQuery(document).ready(function ($) {
+  window.onload = function () {
+    $(".bts-popup").delay(1000).addClass('is-visible');
+  }; //open popup
+
+
+  $('.bts-popup-trigger').on('click', function (event) {
+    event.preventDefault();
+    $('.bts-popup').addClass('is-visible');
+  }); //close popup
+
+  $('.bts-popup').on('click', function (event) {
+    if ($(event.target).is('.bts-popup-close') || $(event.target).is('.bts-popup')) {
+      event.preventDefault();
+      $(this).removeClass('is-visible');
+    }
+  }); //close popup when clicking the esc keyboard button
+
+  $(document).keyup(function (event) {
+    if (event.which == '27') {
+      $('.bts-popup').removeClass('is-visible');
+    }
+  });
+});
 
 /***/ }),
 
