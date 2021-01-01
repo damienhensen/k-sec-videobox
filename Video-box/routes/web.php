@@ -21,11 +21,12 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
     Route::get('/melding', 'PagesController@showMelding')->name('melding');
     Route::get('/about', 'PagesController@showAbout')->name('about');
-    Route::get('/logout', 'PagesController@showLogout')->name('logout');
 });
 
+Route::get('/logout', 'PagesController@showLogout')->middleware('auth')->name('logout');
+
 // Accounts start
-Route::prefix('/u')->group(function () {
+Route::prefix('/u')->middleware('auth')->group(function () {
     Route::get('/', 'ReporterController@index')
         ->name('reporter.crud');
     Route::get('/edit', 'ReporterController@index')

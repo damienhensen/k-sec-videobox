@@ -12,10 +12,6 @@ class PagesController extends Controller
     {
         return view('home');
     }
-    public function showAbout()
-    {
-        return view('about');
-    }
     public function showList()
     {
         return view('list');
@@ -23,6 +19,10 @@ class PagesController extends Controller
     public function showLogout()
     {
         return view('logout');
+    }
+    public function showAbout()
+    {
+        return view('about');
     }
     public function showMelding()
     {
