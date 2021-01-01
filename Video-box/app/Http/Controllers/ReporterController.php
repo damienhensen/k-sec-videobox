@@ -8,6 +8,7 @@ use App\Report;
 Use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Session;
+use Illuminate\Support\Facades\Hash;
 
 class ReporterController extends Controller
 {
@@ -84,5 +85,35 @@ class ReporterController extends Controller
         $report->save();
         
         return redirect()->route('reporter.crud');
+    }
+
+    function accountEditView() {
+        $user = User::find(Auth::id());
+
+        return view('account.edit', compact('user'));
+    }
+
+    function accountEdit(Request $request) {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.Auth::id(),
+            'password' => 'required_if:passwordChange,"on"|nullable|string|min:8|confirmed'
+        ],[
+            'name.required' => 'Je hebt een naam nodig',
+            'email.required' => 'Je hebt een email nodig',
+            'password.required_if' => 'Vul een nieuw wachtwoord in',
+            'password.min' => 'Je hebt minstens :min karakters nodig in je nieuwe wachtwoord',
+        ]);
+
+        $user = User::find(Auth::id());
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+
+        $user->save();
+
+        Session::flash('success', "Account bijgewerkt");
+        return back();
     }
 }

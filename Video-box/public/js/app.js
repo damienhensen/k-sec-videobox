@@ -49730,6 +49730,29 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./melding */ "./resources/js/melding.js");
+
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+
+Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
+var app = new Vue({
+  el: '#app'
+});
 jQuery('input[type="file"]').on('change', function (e) {
   var fileName = e.target.files[0].name;
   jQuery('.custom-file-label').html(fileName);
@@ -49805,29 +49828,52 @@ jQuery('.editVideo button[value=delete]').on('click', function () {
     return false;
   }
 });
+jQuery('.account-edit').on('submit', function (e) {
+  e.preventDefault();
 
-__webpack_require__(/*! ./melding */ "./resources/js/melding.js");
+  if (jQuery('.alert-danger li').length) {
+    jQuery('.alert-danger li').remove();
+  }
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+  var hasError = false;
 
-Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+  if (jQuery('#name').val() == "") {
+    hasError = true;
+    jQuery('.alert-danger ul').append('<li></li>');
+    jQuery('.alert-danger li:last-of-type').append('Je naam is niet ingevuld');
+  }
 
-var app = new Vue({
-  el: '#app'
+  if (jQuery('#email').val() == "") {
+    hasError = true;
+    jQuery('.alert-danger ul').append('<li></li>');
+    jQuery('.alert-danger li:last-of-type').append('Je email is niet ingevuld');
+  }
+
+  if (jQuery('#changePassword:checked').length > 0) {
+    var password1 = jQuery('#password');
+    var password2 = jQuery('#password2');
+
+    if (password1.val().length < 8) {
+      hasError = true;
+      jQuery('.alert-danger ul').append('<li></li>');
+      jQuery('.alert-danger li:last-of-type').append('Je wachtwoord heeft minstens 8 karakters nodig');
+    } else {
+      if (password1.val() !== password2.val()) {
+        hasError = true;
+        jQuery('.alert-danger ul').append('<li></li>');
+        jQuery('.alert-danger li:last-of-type').append('De wachtwoorden komen niet overeen');
+      }
+    }
+  }
+
+  if (!hasError) {
+    jQuery('.alert-danger').hide();
+    HTMLFormElement.prototype.submit.call(this);
+  } else {
+    jQuery('.alert-danger').show();
+  }
+
+  return false;
 });
 
 /***/ }),

@@ -19,7 +19,7 @@
     <button type="submit">Post</button>
 </form>
 
-<div class="alert alert-danger" style="@if ($errors->any()) display: block; @else display: none; @endif">
+<div class="alert alert-danger mt-3" style="@if ($errors->any()) display: block; @else display: none; @endif">
     <ul>
         @if ($errors->any())
             @foreach ($errors->all() as $error)
@@ -30,6 +30,6 @@
 </div>
 
 @if (Session::has('success'))
-   <div class="alert alert-success">{{ Session::get('success') }}</div>
+   <div class="alert alert-success mt-3">{{ Session::get('success') }}</div>
 @endif
 @endsection

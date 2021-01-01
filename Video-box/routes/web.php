@@ -29,7 +29,9 @@ Route::get('/logout', 'PagesController@showLogout')->middleware('auth')->name('l
 Route::prefix('/u')->middleware('auth')->group(function () {
     Route::get('/', 'ReporterController@index')
         ->name('reporter.crud');
-    Route::get('/edit', 'ReporterController@index')
+    Route::get('/edit', 'ReporterController@accountEditView')
+        ->name('reporter.edit.view');
+    Route::post('/edit', 'ReporterController@accountEdit')
         ->name('reporter.edit');
     Route::get('/upload', 'ReporterController@uploadView')
         ->name('reporter.upload.view');
