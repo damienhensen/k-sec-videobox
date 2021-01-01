@@ -1,3 +1,50 @@
+// * {
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+//     font-family: Nunito, Gotham, Sans-serif;
+// }
+
+// a {
+//     color: #000;
+//     text-decoration: none;
+// }
+
+// ul {
+//     list-style: none;
+// }
+
+// .clear {
+//     clear: both;
+// }
+
+// $alertBoxShadow: 1px 1px 6px 0px;
+
+// .alert {
+//     margin: 15px 0;
+//     padding: 10px 20px;
+//     border-radius: 6px;
+//     font-weight: 700;
+
+//     &.alert-success {
+//         box-shadow: $alertBoxShadow #13a909;
+//         background-color: #0ee20e;
+//         color: white;
+//     }
+
+//     &.alert-error {
+//         box-shadow: $alertBoxShadow #a90909;
+//         background-color: #e20e0e;
+//         color: white;
+//         display: none;
+//     }
+
+//     li {
+//         margin: 5px 0;
+//     }
+// }
+
+@import 'reporter';
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 

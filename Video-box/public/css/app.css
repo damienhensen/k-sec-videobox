@@ -1,5 +1,111 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+.reporter {
+  height: 100vh;
+}
+
+.reporter .wrapper {
+  max-width: 1240px;
+  padding: 0 100px;
+  margin: 0 auto;
+}
+
+.reporter .container {
+  padding: 50px 0;
+}
+
+.reporter .navigation {
+  margin: 30px 0;
+}
+
+.reporter .navigation ul {
+  text-align: center;
+}
+
+.reporter .navigation ul li {
+  display: inline-block;
+  margin: 0 50px;
+}
+
+.reporter .navigation ul li a {
+  color: #000000;
+  transition: color 0.2s;
+}
+
+.reporter .navigation ul li a:hover {
+  color: #2e54d1;
+}
+
+.reporter .loop {
+  margin: -10px;
+}
+
+.reporter .loop .item {
+  display: block;
+  width: 25%;
+  float: left;
+  padding: 10px;
+}
+
+.reporter .loop .item .item-in video {
+  width: 100%;
+}
+
+.reporter .loop .item .item-in .edit {
+  background-color: #EDEDED;
+  padding: 7px 15px;
+  display: inline-block;
+  border-radius: 10px 0;
+  transition: all 250ms ease-in-out;
+  font-weight: 500;
+}
+
+.reporter .loop .item .item-in .edit:hover {
+  background-color: #a2a2a2;
+  border-radius: 0;
+  color: #FFFFFF;
+}
+
+.reporter .edit-wrapper input {
+  margin-bottom: 10px;
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid #000;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.reporter .edit-wrapper video {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.reporter .edit-wrapper button {
+  outline: none;
+  border: 0;
+  background-color: #03C112;
+  padding: 7px 15px;
+  display: inline-block;
+  border-radius: 10px 0;
+  transition: all 250ms ease-in-out;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.reporter .edit-wrapper button:hover {
+  background-color: #1D7F24;
+  border-radius: 0;
+}
+
+.reporter .edit-wrapper button[value=delete] {
+  background-color: #C10303;
+}
+
+.reporter .edit-wrapper button[value=delete]:hover {
+  background-color: #7F1D1D;
+}
+
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
