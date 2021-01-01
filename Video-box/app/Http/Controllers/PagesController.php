@@ -9,13 +9,27 @@ use App\Report;
 /////////////---------The view name is the name of the file like home.blade.php the home part belongs in the view.---/////////
 class PagesController extends Controller
 {
-    public function showHome()
+    public function showHome(Request $request)
     {
-        $reports = Report::orderBy('viewCount', 'desc')
-                            ->limit(5)
-                            ->get();
+        $searched = false;
+        if ($request->search != null) {
+            $searched = true;
+            $reports = Report::where('title', 'like', '%'.$request->search.'%')
+                                ->paginate(15)->withPath('/?search='.$request->search);
+        } else {
+            $reports = Report::orderBy('viewCount', 'desc')
+                                ->limit(5)
+                                ->get();
+        }
 
-        return view('home', compact('reports'));
+        return view('home', compact('reports', 'searched'));
+    }
+    public function showSingle($report)
+    {
+        $report = Report::find($report);
+        $report->viewCount++;
+        $report->save();
+        return view('single-report', compact('report'));
     }
     public function showList()
     {

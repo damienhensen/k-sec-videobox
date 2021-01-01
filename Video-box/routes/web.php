@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'PagesController@showHome')->name('homepage');
+Route::get('/report/{report}', 'PagesController@showSingle')->name('report.single');
 Route::get('/list', 'PagesController@showlist')->name('list');
 
 

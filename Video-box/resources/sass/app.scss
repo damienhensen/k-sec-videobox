@@ -1,8 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 
 @import 'reporter';
 // Fonts
@@ -17,3 +13,20 @@
 @import "components/nav";
 @import "components/footer";
 @import "components/melding";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.clear {
+    clear: both;
+}
+
+.home {
+    .card-wrapper {
+        max-width: 20%;
+        float: left;
+    }
+}

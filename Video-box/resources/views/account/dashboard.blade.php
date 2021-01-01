@@ -19,8 +19,6 @@
         <div class="card-body">
             <h5 class="card-title">{{$report->title}}</h5>
             <a href="{{ route('reporter.videoEdit.view', ['video' => $report->id]) }}" class="edit">Edit</a>
-    
-            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
         </div>
     </div>
 </div>
