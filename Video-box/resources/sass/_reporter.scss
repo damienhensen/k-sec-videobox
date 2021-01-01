@@ -1,15 +1,27 @@
 .reporter {
-    height: 100vh;
+    button {
+        outline: none !important;
+        border: 0;
+        background-color: #03c112;
+        padding: 7px 15px;
+        display: inline-block;
+        border-radius: 10px 0;
+        transition: all 250ms ease-in-out;
+        font-weight: 500;
+        color: #ffffff;
 
-    .wrapper {
-        max-width: 1240px;
-        padding: 0 100px;
-    
-        margin: 0 auto;
-    }
-    
-    .container {
-        padding: 50px 0;
+        &:hover {
+            background-color: #1d7f24;
+            border-radius: 0;
+        }
+
+        &[value="delete"] {
+            background-color: #c10303;
+
+            &:hover {
+                background-color: #7f1d1d;
+            }
+        }
     }
 
     .navigation {
@@ -24,7 +36,7 @@
 
                 a {
                     color: #000000;
-                    transition: color .2s;
+                    transition: color 0.2s;
 
                     &:hover {
                         color: #2e54d1;
@@ -34,38 +46,23 @@
         }
     }
 
-    .loop {
-        margin: -10px;
+    .edit {
+        background-color: #ededed;
+        padding: 7px 15px;
+        display: inline-block;
+        border-radius: 10px 0;
+        transition: all 250ms ease-in-out;
+        font-weight: 500;
+        color: #000;
+        text-decoration: none;
 
-        .item {
-            display: block;
-            width: 25%;
-            float: left;
-            padding: 10px;
-
-            .item-in {
-                video {
-                    width: 100%;
-                }
-
-                .edit {
-                    background-color: #EDEDED;
-                    padding: 7px 15px;
-                    display: inline-block;
-                    border-radius: 10px 0;
-                    transition: all 250ms ease-in-out;
-                    font-weight: 500;
-
-                    &:hover {
-                        background-color: #a2a2a2;
-                        border-radius: 0;
-                        color: #FFFFFF;
-                    }
-                }
-            }
+        &:hover {
+            background-color: #a2a2a2;
+            border-radius: 0;
+            color: #ffffff;
         }
     }
-
+    
     .edit-wrapper {
         input {
             margin-bottom: 10px;
@@ -74,37 +71,13 @@
             border-bottom: 1px solid #000;
             font-size: 1.5em;
             font-weight: 500;
+            background-color: transparent !important;
         }
 
         video {
             width: 100%;
             display: block;
             margin-bottom: 10px;
-        }
-
-        button {
-            outline: none;
-            border: 0;
-            background-color: #03C112;
-            padding: 7px 15px;
-            display: inline-block;
-            border-radius: 10px 0;
-            transition: all 250ms ease-in-out;
-            font-weight: 500;
-            color: #FFFFFF;
-
-            &:hover {
-                background-color: #1D7F24;
-                border-radius: 0;
-            }
-
-            &[value=delete] {
-                background-color: #C10303;
-
-                &:hover {
-                    background-color: #7F1D1D;
-                }
-            }
         }
     }
 }

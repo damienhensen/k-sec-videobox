@@ -6,6 +6,11 @@
 
 require('./bootstrap');
 
+jQuery('input[type="file"]').on('change', function(e){
+    var fileName = e.target.files[0].name;
+    jQuery('.custom-file-label').html(fileName);
+});
+
 function uploadVideo() {
     var valid = false;
     var video = jQuery('#r_video');
@@ -32,8 +37,8 @@ function uploadVideo() {
 jQuery('.uploadVideoForm').on('submit', function(e) {
     e.preventDefault();
 
-    if (jQuery('.alert-error li').length) {
-        jQuery('.alert-error li').remove();
+    if (jQuery('.alert-danger li').length) {
+        jQuery('.alert-danger li').remove();
     }
 
     var hasError = false;
@@ -41,34 +46,34 @@ jQuery('.uploadVideoForm').on('submit', function(e) {
     if (jQuery('input[name=video]').val() === "") {
         hasError = true;
 
-        jQuery('.alert-error ul').append('<li></li>');
+        jQuery('.alert-danger ul').append('<li></li>');
 
-        jQuery('.alert-error li:last-of-type').append('Je rapportage heeft natuurlijk wel een video nodig ;)');
+        jQuery('.alert-danger li:last-of-type').append('Je rapportage heeft natuurlijk wel een video nodig ;)');
     }
 
     if (!hasError) {
         if (!uploadVideo()) {
             hasError = true;
     
-            jQuery('.alert-error ul').append('<li></li>');
+            jQuery('.alert-danger ul').append('<li></li>');
         
-            jQuery('.alert-error li:last-of-type').append('De video moet een mp4 of webm zijn');
+            jQuery('.alert-danger li:last-of-type').append('De video moet een mp4 of webm zijn');
         }
     }
 
     if (jQuery('input[name=title]').val() === "") {
         hasError = true;
 
-        jQuery('.alert-error ul').append('<li></li>');
+        jQuery('.alert-danger ul').append('<li></li>');
 
-        jQuery('.alert-error li:last-of-type').append('Je rapportage heeft een titel nodig');
+        jQuery('.alert-danger li:last-of-type').append('Je rapportage heeft een titel nodig');
     }
 
     if (!hasError) {
-        jQuery('.alert-error').hide();
+        jQuery('.alert-danger').hide();
         this.submit();
     } else {
-        jQuery('.alert-error').show();
+        jQuery('.alert-danger').show();
     }
 });
 
