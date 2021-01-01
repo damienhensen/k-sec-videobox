@@ -26,6 +26,7 @@
       <excludeFolder url="file://$MODULE_DIR$/Video-box/vendor/hamcrest/hamcrest-php" />
       <excludeFolder url="file://$MODULE_DIR$/Video-box/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/Video-box/vendor/laravel/tinker" />
+      <excludeFolder url="file://$MODULE_DIR$/Video-box/vendor/laravel/ui" />
       <excludeFolder url="file://$MODULE_DIR$/Video-box/vendor/league/commonmark" />
       <excludeFolder url="file://$MODULE_DIR$/Video-box/vendor/league/flysystem" />
       <excludeFolder url="file://$MODULE_DIR$/Video-box/vendor/league/mime-type-detection" />

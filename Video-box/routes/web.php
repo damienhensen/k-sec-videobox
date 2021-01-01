@@ -13,8 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'PagesController@showHome')->name('homepage');
+Route::get('/list', 'PagesController@showlist')->name('list');
+
+
+Route::prefix('/admin')->middleware('auth')->group(function () {
+
+    Route::get('/melding', 'PagesController@showMelding')->name('melding');
+    Route::get('/about', 'PagesController@showAbout')->name('about');
+    Route::get('/logout', 'PagesController@showLogout')->name('logout');
 });
 
 // Accounts start
@@ -33,3 +40,4 @@ Route::prefix('/u')->group(function () {
         ->name('reporter.videoEdit');
 });
 // Accounts end
+Auth::routes();

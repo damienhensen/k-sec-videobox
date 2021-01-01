@@ -1,16 +1,16 @@
-.wrapper {
-    max-width: 1240px;
-    padding: 0 100px;
-
-    margin: 0 auto;
-}
-
-.container {
-    padding: 50px 0;
-}
-
 .reporter {
     height: 100vh;
+
+    .wrapper {
+        max-width: 1240px;
+        padding: 0 100px;
+    
+        margin: 0 auto;
+    }
+    
+    .container {
+        padding: 50px 0;
+    }
 
     .navigation {
         margin: 30px 0;
