@@ -1,17 +1,28 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
-.reporter {
-  height: 100vh;
+.reporter button {
+  outline: none !important;
+  border: 0;
+  background-color: #03c112;
+  padding: 7px 15px;
+  display: inline-block;
+  border-radius: 10px 0;
+  transition: all 250ms ease-in-out;
+  font-weight: 500;
+  color: #ffffff;
 }
 
-.reporter .wrapper {
-  max-width: 1240px;
-  padding: 0 100px;
-  margin: 0 auto;
+.reporter button:hover {
+  background-color: #1d7f24;
+  border-radius: 0;
 }
 
-.reporter .container {
-  padding: 50px 0;
+.reporter button[value=delete] {
+  background-color: #c10303;
+}
+
+.reporter button[value=delete]:hover {
+  background-color: #7f1d1d;
 }
 
 .reporter .navigation {
@@ -36,34 +47,21 @@
   color: #2e54d1;
 }
 
-.reporter .loop {
-  margin: -10px;
-}
-
-.reporter .loop .item {
-  display: block;
-  width: 25%;
-  float: left;
-  padding: 10px;
-}
-
-.reporter .loop .item .item-in video {
-  width: 100%;
-}
-
-.reporter .loop .item .item-in .edit {
-  background-color: #EDEDED;
+.reporter .edit {
+  background-color: #ededed;
   padding: 7px 15px;
   display: inline-block;
   border-radius: 10px 0;
   transition: all 250ms ease-in-out;
   font-weight: 500;
+  color: #000;
+  text-decoration: none;
 }
 
-.reporter .loop .item .item-in .edit:hover {
+.reporter .edit:hover {
   background-color: #a2a2a2;
   border-radius: 0;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .reporter .edit-wrapper input {
@@ -73,37 +71,13 @@
   border-bottom: 1px solid #000;
   font-size: 1.5em;
   font-weight: 500;
+  background-color: transparent !important;
 }
 
 .reporter .edit-wrapper video {
   width: 100%;
   display: block;
   margin-bottom: 10px;
-}
-
-.reporter .edit-wrapper button {
-  outline: none;
-  border: 0;
-  background-color: #03C112;
-  padding: 7px 15px;
-  display: inline-block;
-  border-radius: 10px 0;
-  transition: all 250ms ease-in-out;
-  font-weight: 500;
-  color: #FFFFFF;
-}
-
-.reporter .edit-wrapper button:hover {
-  background-color: #1D7F24;
-  border-radius: 0;
-}
-
-.reporter .edit-wrapper button[value=delete] {
-  background-color: #C10303;
-}
-
-.reporter .edit-wrapper button[value=delete]:hover {
-  background-color: #7F1D1D;
 }
 
 /*!
@@ -11184,5 +11158,20 @@ body {
   .bts-popup-container {
     margin: 8em auto;
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.clear {
+  clear: both;
+}
+
+.home .card-wrapper {
+  max-width: 20%;
+  float: left;
 }
 

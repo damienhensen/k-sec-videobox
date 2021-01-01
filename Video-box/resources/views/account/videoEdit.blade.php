@@ -1,9 +1,5 @@
 @extends('./templates/account')
 
-@section('username')
-    NAAM-VERSLAGGEVER
-@endsection
-
 @section('content')
 <div class="edit-wrapper">
     <form action="{{ route('reporter.videoEdit', ['video' => $report->id]) }}" method="POST" class="editVideo">

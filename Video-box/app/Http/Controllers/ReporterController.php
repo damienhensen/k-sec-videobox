@@ -3,27 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Reporter;
+use App\User;
 use App\Report;
 Use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Session;
+use Illuminate\Support\Facades\Hash;
 
 class ReporterController extends Controller
 {
     function index() {
-        $reports = Report::where('reporter', 1)->get();
+        $user = User::find(Auth::id());
+        $reports = Report::where('reporter', $user->id)->get();
 
-        return view('account.dashboard', compact("reports"));
+        return view('account.dashboard', compact("user", "reports"));
     }
 
     function uploadView() {
-        return view('account.upload');
-        // $reporter = Reporter::find(Auth::id());
+        $user = User::find(Auth::id());
 
-        // if (!$reporter->verified) {
-        //     return back()->withErrors(['message' => 'Je bent nog niet geaccrediteerd']);
-        // }
+        if (!$user->verified) {
+            return back()->withErrors(['message' => 'Je bent nog niet geaccrediteerd']);
+        }
+
+        return view('account.upload', compact("user"));
     }
 
     function upload(Request $request) {
@@ -39,13 +42,12 @@ class ReporterController extends Controller
         $path       = '/reports';
         $filename   = $request->video->getClientOriginalName();
         $filename   = pathinfo($filename, PATHINFO_FILENAME);
-        $newname    = md5($filename. time());
         $videoPath  = $request->video->store('public'.$path);
         $videoPath  = preg_replace('/public/', 'storage', $videoPath, 1);
 
         $report = new Report();
 
-        $report->reporter   = 1;
+        $report->reporter   = Auth::id();
         $report->title      = $request->title;
         $report->video      = $videoPath;
 
@@ -57,13 +59,14 @@ class ReporterController extends Controller
     }
 
     function videoEditView($video) {
-        $report = Report::where('reporter', 1)->where('id', $video)->first();
+        $user = User::find(Auth::id());
+        $report = Report::where('reporter', $user->id)->where('id', $video)->first();
 
-        return view('account.videoEdit', compact("report"));
+        return view('account.videoEdit', compact("report", "user"));
     }
 
     function videoEdit(Request $request, $video) {
-        $report = Report::where('reporter', 1)->where('id', $video)->first();
+        $report = Report::where('reporter', Auth::id())->where('id', $video)->first();
 
         if ($request->submit == "delete") {
             $report->delete();
@@ -82,5 +85,35 @@ class ReporterController extends Controller
         $report->save();
         
         return redirect()->route('reporter.crud');
+    }
+
+    function accountEditView() {
+        $user = User::find(Auth::id());
+
+        return view('account.edit', compact('user'));
+    }
+
+    function accountEdit(Request $request) {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.Auth::id(),
+            'password' => 'required_if:passwordChange,"on"|nullable|string|min:8|confirmed'
+        ],[
+            'name.required' => 'Je hebt een naam nodig',
+            'email.required' => 'Je hebt een email nodig',
+            'password.required_if' => 'Vul een nieuw wachtwoord in',
+            'password.min' => 'Je hebt minstens :min karakters nodig in je nieuwe wachtwoord',
+        ]);
+
+        $user = User::find(Auth::id());
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+
+        $user->save();
+
+        Session::flash('success', "Account bijgewerkt");
+        return back();
     }
 }

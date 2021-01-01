@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'PagesController@showHome')->name('homepage');
+Route::get('/report/{report}', 'PagesController@showSingle')->name('report.single');
 Route::get('/list', 'PagesController@showlist')->name('list');
 
 
@@ -21,14 +22,17 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
     Route::get('/melding', 'PagesController@showMelding')->name('melding');
     Route::get('/about', 'PagesController@showAbout')->name('about');
-    Route::get('/logout', 'PagesController@showLogout')->name('logout');
 });
 
+Route::get('/logout', 'PagesController@showLogout')->middleware('auth')->name('logout');
+
 // Accounts start
-Route::prefix('/u')->group(function () {
+Route::prefix('/u')->middleware('auth')->group(function () {
     Route::get('/', 'ReporterController@index')
         ->name('reporter.crud');
-    Route::get('/edit', 'ReporterController@index')
+    Route::get('/edit', 'ReporterController@accountEditView')
+        ->name('reporter.edit.view');
+    Route::post('/edit', 'ReporterController@accountEdit')
         ->name('reporter.edit');
     Route::get('/upload', 'ReporterController@uploadView')
         ->name('reporter.upload.view');
