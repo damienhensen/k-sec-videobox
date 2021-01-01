@@ -19389,6 +19389,19 @@ jQuery('.uploadVideoForm').on('submit', function (e) {
     jQuery('.alert-error').show();
   }
 });
+jQuery('.editVideo').on('submit', function () {
+  var title = jQuery(this).find('input[name=title]');
+
+  if (title.val() == "") {
+    alert('Titel mag niet leeg zijn');
+    return false;
+  }
+});
+jQuery('.editVideo button[value=delete]').on('click', function () {
+  if (!confirm('Wil je echt deze rapportage verwijderen?')) {
+    return false;
+  }
+});
 
 /***/ }),
 
@@ -19442,8 +19455,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Projects\School\K_SEC\k-sec-videobox\video-box\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Projects\School\K_SEC\k-sec-videobox\video-box\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Projects\School\K_SEC\k-sec-videobox\Video-box\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Projects\School\K_SEC\k-sec-videobox\Video-box\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

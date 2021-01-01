@@ -55,4 +55,32 @@ class ReporterController extends Controller
         Session::flash('success', "Rapportage geüpload");
         return back();
     }
+
+    function videoEditView($video) {
+        $report = Report::where('reporter', 1)->where('id', $video)->first();
+
+        return view('account.videoEdit', compact("report"));
+    }
+
+    function videoEdit(Request $request, $video) {
+        $report = Report::where('reporter', 1)->where('id', $video)->first();
+
+        if ($request->submit == "delete") {
+            $report->delete();
+            return redirect()->route('reporter.crud');
+        }
+
+        $validated = $request->validate([
+            'title' => 'required|string',
+        ],[
+            'title.required' => 'Je rapportage heeft een titel nodig',
+        ]);
+
+
+        $report->title = $request->title;
+
+        $report->save();
+        
+        return redirect()->route('reporter.crud');
+    }
 }
