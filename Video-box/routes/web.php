@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'PagesController@showHome')->name('homepage');
+Route::get('/report/{report}', 'PagesController@showSingle')->name('report.single');
 Route::get('/list', 'PagesController@showlist')->name('list');
 
 
@@ -21,8 +22,26 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
     Route::get('/melding', 'PagesController@showMelding')->name('melding');
     Route::get('/about', 'PagesController@showAbout')->name('about');
-    Route::get('/logout', 'PagesController@showLogout')->name('logout');
 });
+
+Route::get('/logout', 'PagesController@showLogout')->middleware('auth')->name('logout');
+
+// Accounts start
+Route::prefix('/u')->middleware('auth')->group(function () {
+    Route::get('/', 'ReporterController@index')
+        ->name('reporter.crud');
+    Route::get('/edit', 'ReporterController@accountEditView')
+        ->name('reporter.edit.view');
+    Route::post('/edit', 'ReporterController@accountEdit')
+        ->name('reporter.edit');
+    Route::get('/upload', 'ReporterController@uploadView')
+        ->name('reporter.upload.view');
+    Route::post('/upload', 'ReporterController@upload')
+        ->name('reporter.upload');
+    Route::get('/{video}/edit', 'ReporterController@videoEditView')
+        ->name('reporter.videoEdit.view');
+    Route::post('/{video}/edit', 'ReporterController@videoEdit')
+        ->name('reporter.videoEdit');
+});
+// Accounts end
 Auth::routes();
-
-
