@@ -24,6 +24,7 @@ class ProductController extends Controller
     public function create()
     {
         return view('admin.form');
+    
     }
 
     /**
@@ -34,7 +35,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        return "Form komt hier aan";
+        $request->validate(
+            [
+                'title' => 'required',
+                'description' => 'required',
+                'price' => 'required',
+                'pub_date' => 'required'
+            ]
+            );
+            return 'gelukt';
     }
 
     /**
