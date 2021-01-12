@@ -8,9 +8,11 @@ class UsersController extends Controller
 {
     public function list(){
       $users = DB::table('users')->get();
-      dd($users);
+     
+      return view('admin.overzicht', ['userlist' => $users]);
+    
     }
-    public function details(){
+      public function details(){
         
     }
 }
