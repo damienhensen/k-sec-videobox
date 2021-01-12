@@ -6,7 +6,5 @@ use Illuminate\Http\Request;
 
 class ShowList extends Controller
 {
-    public function list(){
-      
-    }
+    //
 }
