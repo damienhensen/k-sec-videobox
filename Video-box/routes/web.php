@@ -26,9 +26,10 @@ Route::get('/logout', 'PagesController@showLogout')->middleware('auth')->name('l
 Route::prefix('/a')->middleware('auth')->group(function () {
 
         Route::get('/admin', 'AdminController@index')->name('admin.index');
-    
         Route::get('/overzicht', 'AdminController@overzicht')->name('admin.overzicht');
 
+        Route::get('/product/create', 'ProductController@create')->name('product.add');
+        Route::post('/product/create', 'ProductController@store')->name('product.store');
 
 });
 
