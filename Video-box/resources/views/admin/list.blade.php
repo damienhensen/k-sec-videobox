@@ -10,7 +10,7 @@
 @foreach ($userlist as $list)
 <tr>
     <td>
-        {{ $list->name }}
+        <a href="{{ route('user.details', ['id' => $list->id]) }}">{{ $list->name }}</a>
     </td>
     <td>
         {{ $list->email }}

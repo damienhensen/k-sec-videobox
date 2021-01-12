@@ -31,8 +31,8 @@ Route::prefix('/a')->middleware('auth')->group(function () {
         Route::get('/product/create', 'ProductController@create')->name('product.add');
         Route::post('/product/create', 'ProductController@store')->name('product.store');
         
-        Route::get('/userlist', 'UsersController@list');
-        Route::get('/userlist/{id}', 'UsersController@details');
+        Route::get('/userlist', 'UsersController@list')->name('user.list');
+        Route::get('/userlist/{id}', 'UsersController@details')->name('user.details');
 });
 
 

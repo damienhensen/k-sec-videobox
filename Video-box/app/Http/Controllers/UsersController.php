@@ -13,7 +13,7 @@ class UsersController extends Controller
     
     }
       public function details($id){
-      $user = DB::table('users')->where('id', '=', $id)->first();  
+      $user = DB::table('users')->find($id);  
 
       return view('admin.details', ['list' => $user]);
 
