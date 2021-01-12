@@ -5,8 +5,4 @@
 
 <li><a href="{{ route('product.add') }}">Producten toevoegen</a></li>
 
-@foreach ($userlist as $list)
-    {{ $list->name }} <br />
-@endforeach
-
 @endsection

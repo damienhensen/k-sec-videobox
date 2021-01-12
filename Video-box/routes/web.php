@@ -32,7 +32,7 @@ Route::prefix('/a')->middleware('auth')->group(function () {
         Route::post('/product/create', 'ProductController@store')->name('product.store');
         
         Route::get('/userlist', 'UsersController@list');
-        
+        Route::get('/userlist/{id}', 'UsersController@details');
 });
 
 

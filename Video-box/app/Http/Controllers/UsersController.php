@@ -9,10 +9,15 @@ class UsersController extends Controller
     public function list(){
       $users = DB::table('users')->get();
      
-      return view('admin.overzicht', ['userlist' => $users]);
+      return view('admin.list', ['userlist' => $users]);
     
     }
-      public function details(){
-        
+      public function details($id){
+      $user = DB::table('users')->where('id', '=', $id)->first();  
+
+      return view('admin.details', ['list' => $user]);
+
+
+
     }
 }
