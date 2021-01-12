@@ -10,5 +10,9 @@ class AdminController extends Controller
     {
         return view('admin.index');
     }
+    public function overzicht()
+    {
+        return view('admin.overzicht');
+    }
 
 }

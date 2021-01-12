@@ -27,6 +27,7 @@ Route::prefix('/a')->middleware('auth')->group(function () {
 
         Route::get('/admin', 'AdminController@index')->name('admin.index');
     
+        Route::get('/overzicht', 'AdminController@overzicht')->name('admin.overzicht');
 
 
 });
