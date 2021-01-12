@@ -8,4 +8,5 @@
 {{$list->type}} <br/>
 
 
+<li><a href="{{ route('admin.overzicht') }}">terug naar overzicht</a></li>
 @endsection
