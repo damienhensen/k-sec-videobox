@@ -25,7 +25,7 @@ Route::get('/logout', 'PagesController@showLogout')->middleware('auth')->name('l
 //admin starts
 Route::prefix('/a')->middleware('auth')->group(function () {
 
-        Route::get('/admin', 'AdminController@index')->name('admin');
+        Route::get('/admin', 'AdminController@index')->name('admin.index');
     
 
 
@@ -42,20 +42,13 @@ Route::prefix('/a')->middleware('auth')->group(function () {
 // Accounts start
 Route::prefix('/u')->middleware('auth')->group(function () {
     Route::get('/melding', 'PagesController@showMelding')->name('melding');
-    Route::get('/', 'ReporterController@index')
-        ->name('reporter.crud');
-    Route::get('/edit', 'ReporterController@accountEditView')
-        ->name('reporter.edit.view');
-    Route::post('/edit', 'ReporterController@accountEdit')
-        ->name('reporter.edit');
-    Route::get('/upload', 'ReporterController@uploadView')
-        ->name('reporter.upload.view');
-    Route::post('/upload', 'ReporterController@upload')
-        ->name('reporter.upload');
-    Route::get('/{video}/edit', 'ReporterController@videoEditView')
-        ->name('reporter.videoEdit.view');
-    Route::post('/{video}/edit', 'ReporterController@videoEdit')
-        ->name('reporter.videoEdit');
+    Route::get('/', 'ReporterController@index')->name('reporter.crud');
+    Route::get('/edit', 'ReporterController@accountEditView')->name('reporter.edit.view');
+    Route::post('/edit', 'ReporterController@accountEdit') ->name('reporter.edit');
+    Route::get('/upload', 'ReporterController@uploadView') ->name('reporter.upload.view');
+    Route::post('/upload', 'ReporterController@upload') ->name('reporter.upload');
+    Route::get('/{video}/edit', 'ReporterController@videoEditView') ->name('reporter.videoEdit.view');
+    Route::post('/{video}/edit', 'ReporterController@videoEdit') ->name('reporter.videoEdit');
 });
 // Accounts end
 Auth::routes();
