@@ -12,6 +12,16 @@ use Illuminate\Support\Facades\Hash;
 
 class ReporterController extends Controller
 {
+    public function __construct() {
+        $this->middleware(function ($request, $next) {  
+            if (Auth::user()->type != 'reporter') {
+                return redirect('/');
+            }
+            
+            return $next($request);
+        });
+    }
+
     function index() {
         $user = User::find(Auth::id());
         $reports = Report::where('reporter', $user->id)->get();
