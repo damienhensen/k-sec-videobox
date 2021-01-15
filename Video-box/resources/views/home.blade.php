@@ -58,4 +58,7 @@
     </div>
     @endif
 </div>
+
+
+<h1 style="text-align: center;">Welkom bezoekers</h1>
 @endsection
