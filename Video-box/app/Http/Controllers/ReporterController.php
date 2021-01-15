@@ -32,7 +32,7 @@ class ReporterController extends Controller
     function upload(Request $request) {
         $validated = $request->validate([
             'title' => 'required|string',
-            'video' => 'required|file|mimetypes:video/mp4,video/webm'
+            'video' => 'required|file|mimetypes:video/mp4,video/webm|max:5000000'
         ],[
             'title.required' => 'Je rapportage heeft een titel nodig',
             'video.required' => 'Je rapportage heeft natuurlijk wel een video nodig ;)',
