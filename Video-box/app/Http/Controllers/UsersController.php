@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Dum;
 class UsersController extends Controller
 {
     public function list(){
@@ -19,5 +20,16 @@ class UsersController extends Controller
 
 
 
+    }
+    public function destroy($id)
+    {
+    //   if ($id != null) {
+    //     $id->delete();
+    //     return redirect()->route('user.list');
+    // }
+        $id = Dum::find($id);
+        $id ->delete();
+       session()->flash('message', 'Delete Successfully');
+        return redirect()->route('user.list');
     }
 }

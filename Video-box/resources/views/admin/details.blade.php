@@ -9,4 +9,9 @@
 
 
 <li><a href="{{ route('admin.overzicht') }}">terug naar overzicht</a></li>
+<form class="form-group pull-right" action="{{ route('userlist.destroy', ['id' => $id->id])}}" method="post">
+    @method("DELETE")
+    @csrf
+    <button type="submit" onclick="return confirm('Are you sure?')" value="Delete" style="border: none"><i class="fa fa-trash" aria-hidden="true"></i></button>
+   </form>
 @endsection
