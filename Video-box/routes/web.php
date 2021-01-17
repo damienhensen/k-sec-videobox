@@ -34,6 +34,7 @@ Route::prefix('/a')->middleware('auth')->group(function () {
         Route::get('/userlist', 'UsersController@list')->name('user.list');
         Route::delete('/userlist/{id}', 'UsersController@destroy')->name('userlist.destroy');
         Route::get('/userlist/{id}', 'UsersController@details')->name('user.details');
+
 });
 
 
