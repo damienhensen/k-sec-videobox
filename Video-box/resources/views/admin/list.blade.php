@@ -3,7 +3,7 @@
 @section('content')
 <h1>list</h1>
 
-<li><a href="{{ route('product.add') }}">Producten toevoegen</a></li>
+<a href="{{ route('product.add') }}">Producten toevoegen</a>
 
 
 <table class="table table-condensed table-bordered">
