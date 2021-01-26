@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Report;
+use App\Models\Report;
 
 
 /////////////---------The view name is the name of the file like home.blade.php the home part belongs in the view.---/////////

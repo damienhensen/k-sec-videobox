@@ -13,14 +13,14 @@ class UsersController extends Controller
       return view('admin.list', ['userlist' => $users]);
     
     }
-      public function details($id){
+    
+    public function details($id){
       $user = DB::table('users')->find($id);  
 
       return view('admin.details', ['list' => $user]);
 
-
-
     }
+    
     public function destroy($id)
     {
     //   if ($id != null) {

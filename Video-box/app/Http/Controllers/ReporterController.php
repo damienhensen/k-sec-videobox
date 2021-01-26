@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Report;
+use App\Models\Report;
 Use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Session;

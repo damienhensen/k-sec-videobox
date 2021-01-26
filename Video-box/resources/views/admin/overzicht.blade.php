@@ -5,4 +5,5 @@
 
 <li><a href="{{ route('product.add') }}">Producten toevoegen</a></li>
 <li><a href="{{ route('user.list') }}">users zien</a></li>
+<li><a href="{{ route('report.list') }}">video zien</a></li>
 @endsection
