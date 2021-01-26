@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Reports;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Dum;
@@ -17,8 +17,10 @@ class UsersController extends Controller
       $user = DB::table('users')->find($id);  
 
       return view('admin.details', ['list' => $user]);
+
+
+
     }
-    
     public function destroy($id)
     {
     //   if ($id != null) {
